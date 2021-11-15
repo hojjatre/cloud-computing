@@ -7,7 +7,7 @@
     `pip install djangorestframework`
 3. Install numpy:
     `pip install numpy`
-4. Install matplolib:
+4. Install matplotlib:
     `pip install matplotlib`
 
     
