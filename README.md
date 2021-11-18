@@ -10,4 +10,7 @@
 4. Install matplotlib:
     `pip install matplotlib`
 
-    
+## Convert CSV to Sqlite3
+1. `sqlite3 db.sqlite3`
+2. `.mode csv`
+3. `.import vgsales.csv app_vgsales`
