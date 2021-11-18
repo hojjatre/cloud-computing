@@ -2,7 +2,7 @@ from django.contrib.auth import models
 from django.db.models import fields
 from rest_framework import serializers
 
-from .models import User
+from .models import User, vgSales
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -20,3 +20,9 @@ class UserSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+
+class VgSalesSerialier(serializers.ModelSerializer):
+
+    class Meta:
+        model = vgSales
+        fields = "__all__"
