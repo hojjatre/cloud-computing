@@ -3,7 +3,7 @@ from rest_framework import permissions
 from django.db.models import F
 from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework.generics import CreateAPIView, ListAPIView, ListCreateAPIView
-from rest_framework.status import HTTP_204_NO_CONTENT
+from rest_framework.status import HTTP_200_OK, HTTP_204_NO_CONTENT
 from rest_framework.views import APIView
 from rest_framework import generics, serializers
 from .serializers import UserSerializer
@@ -23,7 +23,7 @@ class Logout(APIView):
 
     def post(self, request):
         request.user.auth_token.delete()
-        return Response(data={'message': f"Bye {request.user.username}!"}, status=HTTP_204_NO_CONTENT)
+        return Response(data={'message': f"Bye {request.user.username}!"}, status=HTTP_200_OK)
 
 class ShowUser(ListAPIView):
     """
