@@ -1,10 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
-
-
-class User(AbstractUser):
-    pass
-# Create your models here.
 
 class vgSales(models.Model):
     # Rank = models.IntegerField(null=False, default=0)
