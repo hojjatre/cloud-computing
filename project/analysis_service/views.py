@@ -1,5 +1,5 @@
 from rest_framework.views import APIView
-
+from django.db.models import Count
 from main_service.serializers import  VgSalesSerialier
 from django.db.models import Sum
 from main_service.models import vgSales
@@ -69,7 +69,7 @@ class ComparisonTwoGames(APIView):
         axis[1].bar(['NA', 'EU', 'JP', 'Other', 'Global'], game2_np)
         axis[1].set_title(f"{name_game2}")
         
-        plt.savefig(f"comparison_{name_game1}_with_{name_game2}.png")
+        plt.savefig(f"result/comparison_{name_game1}_with_{name_game2}.png")
 
 
         return Response(data={
@@ -120,7 +120,7 @@ class TotalSalesEachYear(APIView):
 
         plt.title(f"Total Sales in {yearOne} until {yearTwo}")
         
-        plt.savefig(f"Total Sales in {yearOne} until {yearTwo}.png")
+        plt.savefig(f"result/Total Sales in {yearOne} until {yearTwo}.png")
 
         return Response(data={
             'year': year,
@@ -185,9 +185,46 @@ class TotalSalesBetweenPublisherEachYear(APIView):
         axis[1].bar(year, sales_np_publisher2)
         axis[1].set_title(f"{publisherTwo}")
         
-        plt.savefig(f"comparison_{publisherOne}_with_{publisherTwo}_EachYear.png")
+        plt.savefig(f"result/comparison_{publisherOne}_with_{publisherTwo}_EachYear.png")
 
 
         return Response(data={
             f"save image as comparison_{publisherOne}_with_{publisherTwo}_EachYear.png",
+        })
+
+class TotalSalesBetweenGenreEachYear(APIView):
+    serializer_class = VgSalesSerialier
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, yearOne, yearTwo):
+        games = vgSales.objects.values('Genre').annotate(count=Count('Genre'))
+
+        genre_games = []
+
+        for game in games:
+            genre_games.append(game.get('Genre'))
+        
+        temp = []
+
+        for genre in genre_games:
+            game_with_genre = vgSales.objects.filter(Genre=genre).filter(Year__lte=yearTwo).filter(Year__gte=yearOne).aggregate(
+                sum=Sum('EU_Sales') + Sum('NA_Sales') + Sum('JP_Sales') + Sum('Other_Sales') + Sum('Global_Sales')).get('sum')
+            
+            temp.append(game_with_genre)
+        
+        sales = np.array(temp)
+
+        fig = plt.figure(figsize = (15, 5))
+
+        plt.bar(genre_games, sales)
+
+        plt.tick_params(axis='x', colors='red', direction='out', length=13, width=3)
+
+        plt.title(f"Total Sales in {yearOne} until {yearTwo}")
+        
+        plt.savefig(f"result/Total Sales in {yearOne} until {yearTwo} for Genre.png")
+
+        return Response(data={
+            'sales': sales,
+            'genre':genre_games,
         })
