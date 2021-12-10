@@ -69,7 +69,7 @@ class ComparisonTwoGames(APIView):
         axis[1].bar(['NA', 'EU', 'JP', 'Other', 'Global'], game2_np)
         axis[1].set_title(f"{name_game2}")
         
-        plt.savefig(f"result/comparison_{name_game1}_with_{name_game2}.png")
+        plt.savefig(f"../media/comparison_{name_game1}_with_{name_game2}.png")
 
 
         return Response(data={
@@ -120,7 +120,7 @@ class TotalSalesEachYear(APIView):
 
         plt.title(f"Total Sales in {yearOne} until {yearTwo}")
         
-        plt.savefig(f"result/Total Sales in {yearOne} until {yearTwo}.png")
+        plt.savefig(f"../media/Total Sales in {yearOne} until {yearTwo}.png")
 
         return Response(data={
             'year': year,
@@ -185,7 +185,7 @@ class TotalSalesBetweenPublisherEachYear(APIView):
         axis[1].bar(year, sales_np_publisher2)
         axis[1].set_title(f"{publisherTwo}")
         
-        plt.savefig(f"result/comparison_{publisherOne}_with_{publisherTwo}_EachYear.png")
+        plt.savefig(f"../media/comparison_{publisherOne}_with_{publisherTwo}_EachYear.png")
 
 
         return Response(data={
@@ -222,7 +222,7 @@ class TotalSalesBetweenGenreEachYear(APIView):
 
         plt.title(f"Total Sales in {yearOne} until {yearTwo}")
         
-        plt.savefig(f"result/Total Sales in {yearOne} until {yearTwo} for Genre.png")
+        plt.savefig(f"../media/Total Sales in {yearOne} until {yearTwo} for Genre.png")
 
         return Response(data={
             'sales': sales,
