@@ -13,7 +13,7 @@
 ## Convert CSV to Sqlite3
 1. `sqlite3 db.sqlite3`
 2. `.mode csv`
-3. `.import vgsales.csv app_vgsales`
+3. `.import vgsales.csv main_service_vgsales`
 
 ## How make multiple database
 1. change settings.py
