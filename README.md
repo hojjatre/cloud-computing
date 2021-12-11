@@ -14,3 +14,6 @@
 1. `sqlite3 db.sqlite3`
 2. `.mode csv`
 3. `.import vgsales.csv app_vgsales`
+
+## docker branch
+https://github.com/hojjatre/cloud-computing/tree/docker
