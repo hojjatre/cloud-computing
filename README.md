@@ -15,10 +15,6 @@
 2. `.mode csv`
 3. `.import vgsales.csv app_vgsales`
 
-<<<<<<< HEAD
-## docker branch
-https://github.com/hojjatre/cloud-computing/tree/docker
-=======
 ## How make multiple database
 1. change settings.py
 ```python
@@ -50,6 +46,8 @@ class Vgsales:
 4. migrate
     `python manage.py migrate --database=users_db`
     `python manage.py migrate --database=vgsales_db`
+## Problem in multiple database
+`python manage.py createsuperuser` doesn't work, It must be change to `python manage.py createsuperuser --database=users_db`
 
 ## Problem in dockerize
 1. Localhost not opened. The first I used this code.
@@ -62,6 +60,7 @@ CMD python3 manage.py makemigrations --noinput && \
     python3 manage.py migrate --database=vgsales_db --noinput && \
     python3 csvtodb.py && \
     python3 manage.py collectstatic --noinput && \
+    python3 manage.py createsuperuser --database=users_db --user admin --email admin@gmail.com --noinput; \
     python manage.py runserver
 ```
 So I use gunicorn.
@@ -74,6 +73,7 @@ CMD python3 manage.py makemigrations --noinput && \
     python3 manage.py migrate --database=vgsales_db --noinput && \
     python3 csvtodb.py && \
     python3 manage.py collectstatic --noinput && \
+    python3 manage.py createsuperuser --database=users_db --user admin --email admin@gmail.com --noinput; \
     gunicorn -b 0.0.0.0:8000 project.wsgi
 ```
 2. I want to use python:alpine for media and static files, but matplotlib didn't install. And I figure out for install matplotlib on python:alpine, must use this code.
