@@ -1,0 +1,511 @@
+{
+	"info": {
+		"_postman_id": "b83bf6a2-b291-475d-aea1-a68cee0bbc89",
+		"name": "cloud computing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "account",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "mohammad",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456mohammad",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/register/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login-token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "mohammad",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456mohammad",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "main_service",
+			"item": [
+				{
+					"name": "games by rank",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 4153208194123730cda208e50e4df28c89e8184c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/gamesRank/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"gamesRank",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "games name",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 4153208194123730cda208e50e4df28c89e8184c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/gamesName/super Mario",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"gamesName",
+								"super Mario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "games name - ex2",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 4153208194123730cda208e50e4df28c89e8184c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/gamesName/call of duty 3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"gamesName",
+								"call of duty 3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "N best Gamein Every Year - ex1",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 4153208194123730cda208e50e4df28c89e8184c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/bestGame?N=5&Which=Platform",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"bestGame"
+							],
+							"query": [
+								{
+									"key": "N",
+									"value": "5"
+								},
+								{
+									"key": "Which",
+									"value": "Platform"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "N best Gamein Every Year - ex2",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 4153208194123730cda208e50e4df28c89e8184c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/bestGame?N=5&Which=Year",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"bestGame"
+							],
+							"query": [
+								{
+									"key": "N",
+									"value": "5"
+								},
+								{
+									"key": "Which",
+									"value": "Year"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Five Best Game For One PlatformIn Particular Year",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 4153208194123730cda208e50e4df28c89e8184c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/fiveBestGame?year=2006&platform=Wii",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"fiveBestGame"
+							],
+							"query": [
+								{
+									"key": "year",
+									"value": "2006"
+								},
+								{
+									"key": "platform",
+									"value": "Wii"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eu Gt Na",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 4153208194123730cda208e50e4df28c89e8184c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/euGTna",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"euGTna"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "analysis service",
+			"item": [
+				{
+					"name": "Comparison Two Games",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 4153208194123730cda208e50e4df28c89e8184c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/comparison/Super Mario Bros./Call of Duty: Modern Warfare 3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"comparison",
+								"Super Mario Bros.",
+								"Call of Duty: Modern Warfare 3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Comparison Two Games - ex 2",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 4153208194123730cda208e50e4df28c89e8184c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/comparison/Super Mario Bros./Wii Sports",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"comparison",
+								"Super Mario Bros.",
+								"Wii Sports"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Total Sales Each Year",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 4153208194123730cda208e50e4df28c89e8184c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/totalsales/2006/2012",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"totalsales",
+								"2006",
+								"2012"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Total Sales Each Year - ex 2",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 4153208194123730cda208e50e4df28c89e8184c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/totalsales/2006/2015",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"totalsales",
+								"2006",
+								"2015"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Total Sales Between Publisher Each Year",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 4153208194123730cda208e50e4df28c89e8184c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/comparisonpublisher/2006/2015/Activision/Microsoft Game Studios",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"comparisonpublisher",
+								"2006",
+								"2015",
+								"Activision",
+								"Microsoft Game Studios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Total Sales Between Genre Each Year",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "token 4153208194123730cda208e50e4df28c89e8184c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/totalsalesGenre/2006/2015",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"totalsalesGenre",
+								"2006",
+								"2015"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
