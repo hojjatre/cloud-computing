@@ -15,7 +15,7 @@
 2. `.mode csv`
 3. `.import vgsales.csv app_vgsales`
 
-## How make multiple database
+## How to make multiple database
 1. change settings.py
 ```python
 DATABASES = {
@@ -46,11 +46,11 @@ class Vgsales:
 4. migrate
     `python manage.py migrate --database=users_db`
     `python manage.py migrate --database=vgsales_db`
-## Problem in multiple database
-`python manage.py createsuperuser` doesn't work, It must be change to `python manage.py createsuperuser --database=users_db`
+## Problem in multiple databases
+`python manage.py createsuperuser` didn't work, It must be changed to `python manage.py createsuperuser --database=users_db`
 
 ## Problem in dockerize
-1. Localhost not opened. The first I used this code.
+1. Localhost did not open. At first I used this code.
 ```docker
 FROM python:3.8
 ...
@@ -76,14 +76,14 @@ CMD python3 manage.py makemigrations --noinput && \
     python3 manage.py createsuperuser --database=users_db --user admin --email admin@gmail.com --noinput; \
     gunicorn -b 0.0.0.0:8000 project.wsgi
 ```
-2. I want to use python:alpine for media and static files, but matplotlib didn't install. And I figure out for install matplotlib on python:alpine, must use this code.
+2. I want to use python:alpine for media and static files, but matplotlib didn't install. And I figured out that in order to install matplotlib on python:alpine, I must use this code.
 ```docker
 FROM python:3.8-alpine3.15
 ...
 RUN apk add g++ jpeg-dev zlib-dev libjpeg make
 ...
 ```
-3. We need import CSV to sqlite,I used `sqlite3 vgsales.db.sqlite3 -cmd ".mode csv" ".import vgsales.csv main_service_vgsales"` before, But docker doesn't know what `sqlite3` is, So I make a `csvtodb.py`, I call it for import csv to sqlite.
+3. We needed to import CSV to sqlite, I used `sqlite3 vgsales.db.sqlite3 -cmd ".mode csv" ".import vgsales.csv main_service_vgsales"` before, But docker didn't know what `sqlite3` was, So I made a `csvtodb.py`, I called it for import csv to sqlite.
 4. The last problem is media and static file doesn't work, So I think must use `nginx`, But the problem is in my directory.
 I got used to my directory is:
 ```
